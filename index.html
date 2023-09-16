@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let playerScore = 0;
+        let compScore = 0;
+        console.log(getComputerChoice());
+        console.log(playGame());
+
+        console.log(game());
+
+
+
+
+
+        function getComputerChoice(){
+            let num = Math.floor(Math.random() * 3);
+            if(num === 0){
+                return "Rock";
+            }
+            else if(num===1){
+                return "Paper";
+            }
+            else{
+                return "Scissors";
+            }
+        }
+
+        function playGame(playerSelection = "rock", compSelection){
+     
+             let computerSelection = getComputerChoice().toString();
+             playerSelection  = playerSelection.toString().toLowerCase();
+             if (playerSelection === "rock"){
+                if(computerSelection === "Rock"){
+                    return "Tie";
+                }
+                else if(playerSelection === "scissors"){
+                    playerScore+=1;
+                    return "You win";
+                    
+                }
+                else{
+                    compScore += 1;
+                    return "You lose";
+                    
+
+                }
+             }
+             else if (playerSelection === "scissors"){
+                if(computerSelection === "Rock"){
+                    compScore += 1;
+                    return "You lose";
+                    
+                }
+                else if(playerSelection === "scissors"){
+                    return "Tie";
+                }
+                else{
+                    playerScore+=1;
+                    return "You win";
+                    
+
+                }
+            }
+            else if (playerSelection === "paper"){
+                if(computerSelection === "Rock"){
+                    playerScore+=1;
+                    return "You win";
+
+                }
+                else if(playerSelection === "scissors"){
+                    return "Tie";
+                }
+                else{
+                    compScore += 1;
+                    return "You lose";
+                    
+
+             }
+        }
+    }
+
+        function game(){
+            let sign = prompt("What will you use?");
+            for(var i = 0; i < 5; i++){
+                playGame(prompt, getComputerChoice());
+            }
+            if(playerScore > compScore){
+                return "You win the best of 5";
+            }
+            else{
+                return "You lose the best of 5";
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
